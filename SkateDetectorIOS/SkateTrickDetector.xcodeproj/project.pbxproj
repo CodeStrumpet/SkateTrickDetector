@@ -26,6 +26,15 @@
 		EC8724A42141EC01004768FA /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC8724A32141EC01004768FA /* OpenGLES.framework */; };
 		EC8724A62141EC08004768FA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC8724A52141EC08004768FA /* QuartzCore.framework */; };
 		EC8724A82141F0CC004768FA /* tile_floor.png in Resources */ = {isa = PBXBuildFile; fileRef = EC8724A72141F0CC004768FA /* tile_floor.png */; };
+		EC8724BC2142148E004768FA /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC8724B92142148D004768FA /* CocoaAsyncSocket.framework */; };
+		EC8724BD2142148E004768FA /* RMQClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC8724BA2142148D004768FA /* RMQClient.framework */; };
+		EC8724BE2142148E004768FA /* JKVValue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC8724BB2142148E004768FA /* JKVValue.framework */; };
+		EC8724BF21421549004768FA /* JKVValue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC8724BB2142148E004768FA /* JKVValue.framework */; };
+		EC8724C021421549004768FA /* JKVValue.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EC8724BB2142148E004768FA /* JKVValue.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EC8724C221421589004768FA /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC8724B92142148D004768FA /* CocoaAsyncSocket.framework */; };
+		EC8724C321421589004768FA /* CocoaAsyncSocket.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EC8724B92142148D004768FA /* CocoaAsyncSocket.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EC8724C421421589004768FA /* RMQClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC8724BA2142148D004768FA /* RMQClient.framework */; };
+		EC8724C521421589004768FA /* RMQClient.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EC8724BA2142148D004768FA /* RMQClient.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +46,22 @@
 			remoteInfo = rfduinoBulkDataTransfer;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		EC8724C121421549004768FA /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				EC8724C321421589004768FA /* CocoaAsyncSocket.framework in Embed Frameworks */,
+				EC8724C521421589004768FA /* RMQClient.framework in Embed Frameworks */,
+				EC8724C021421549004768FA /* JKVValue.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		AABEB8C2185167E000833990 /* SkateTrickDetector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SkateTrickDetector.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -68,6 +93,9 @@
 		EC8724A32141EC01004768FA /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		EC8724A52141EC08004768FA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		EC8724A72141F0CC004768FA /* tile_floor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tile_floor.png; sourceTree = "<group>"; };
+		EC8724B92142148D004768FA /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaAsyncSocket.framework; path = Carthage/Build/iOS/CocoaAsyncSocket.framework; sourceTree = "<group>"; };
+		EC8724BA2142148D004768FA /* RMQClient.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RMQClient.framework; path = Carthage/Build/iOS/RMQClient.framework; sourceTree = "<group>"; };
+		EC8724BB2142148E004768FA /* JKVValue.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JKVValue.framework; path = Carthage/Build/iOS/JKVValue.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,11 +103,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC8724BE2142148E004768FA /* JKVValue.framework in Frameworks */,
+				EC8724BC2142148E004768FA /* CocoaAsyncSocket.framework in Frameworks */,
+				EC8724BF21421549004768FA /* JKVValue.framework in Frameworks */,
 				EC8724A62141EC08004768FA /* QuartzCore.framework in Frameworks */,
 				EC8724A42141EC01004768FA /* OpenGLES.framework in Frameworks */,
 				EC8724A22141EBEC004768FA /* GLKit.framework in Frameworks */,
 				AABEB8C8185167E000833990 /* CoreGraphics.framework in Frameworks */,
 				AABEB8CA185167E000833990 /* UIKit.framework in Frameworks */,
+				EC8724BD2142148E004768FA /* RMQClient.framework in Frameworks */,
+				EC8724C221421589004768FA /* CocoaAsyncSocket.framework in Frameworks */,
+				EC8724C421421589004768FA /* RMQClient.framework in Frameworks */,
 				AABEB8C6185167E000833990 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -119,6 +153,9 @@
 		AABEB8C4185167E000833990 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EC8724B92142148D004768FA /* CocoaAsyncSocket.framework */,
+				EC8724BB2142148E004768FA /* JKVValue.framework */,
+				EC8724BA2142148D004768FA /* RMQClient.framework */,
 				EC8724A52141EC08004768FA /* QuartzCore.framework */,
 				EC8724A32141EC01004768FA /* OpenGLES.framework */,
 				EC8724A12141EBEC004768FA /* GLKit.framework */,
@@ -183,6 +220,8 @@
 				AABEB8BE185167E000833990 /* Sources */,
 				AABEB8BF185167E000833990 /* Frameworks */,
 				AABEB8C0185167E000833990 /* Resources */,
+				EC8724B221421008004768FA /* ShellScript */,
+				EC8724C121421549004768FA /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -265,6 +304,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		EC8724B221421008004768FA /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/CocoaAsyncSocket.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/JKVValue.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RMQClient.framework",
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/CocoaAsyncSocket.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/JKVValue.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RMQClient.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		AABEB8BE185167E000833990 /* Sources */ = {
@@ -390,10 +451,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = 96JGT34257;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/**/Carthage/Build/iOS/",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "rfduinoBulkDataTransfer/SkateTrickDetector-Prefix.pch";
 				INFOPLIST_FILE = "rfduinoBulkDataTransfer/SkateTrickDetector-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.RFduino.rfduinoBulkDataTrangress;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -406,10 +472,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = 96JGT34257;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/**/Carthage/Build/iOS/",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "rfduinoBulkDataTransfer/SkateTrickDetector-Prefix.pch";
 				INFOPLIST_FILE = "rfduinoBulkDataTransfer/SkateTrickDetector-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.RFduino.rfduinoBulkDataTrangress;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
