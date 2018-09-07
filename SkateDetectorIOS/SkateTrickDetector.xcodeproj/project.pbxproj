@@ -39,16 +39,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		AABEB8C2185167E000833990 /* rfduinoBulkDataTransfer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rfduinoBulkDataTransfer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AABEB8C2185167E000833990 /* SkateTrickDetector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SkateTrickDetector.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AABEB8C5185167E000833990 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AABEB8C7185167E000833990 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		AABEB8C9185167E000833990 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		AABEB8CD185167E000833990 /* rfduinoBulkDataTransfer-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "rfduinoBulkDataTransfer-Info.plist"; sourceTree = "<group>"; };
+		AABEB8CD185167E000833990 /* SkateTrickDetector-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SkateTrickDetector-Info.plist"; sourceTree = "<group>"; };
 		AABEB8CF185167E000833990 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AABEB8D1185167E000833990 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AABEB8D3185167E000833990 /* rfduinoBulkDataTransfer-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "rfduinoBulkDataTransfer-Prefix.pch"; sourceTree = "<group>"; };
 		AABEB8D7185167E000833990 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		AABEB8DD185167E000833990 /* rfduinoBulkDataTransferTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = rfduinoBulkDataTransferTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AABEB8DD185167E000833990 /* SkateTrickDetectorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SkateTrickDetectorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AABEB8DE185167E000833990 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		AABEB8F5185167EC00833990 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AABEB8F6185167EC00833990 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -110,8 +110,8 @@
 		AABEB8C3185167E000833990 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AABEB8C2185167E000833990 /* rfduinoBulkDataTransfer.app */,
-				AABEB8DD185167E000833990 /* rfduinoBulkDataTransferTests.xctest */,
+				AABEB8C2185167E000833990 /* SkateTrickDetector.app */,
+				AABEB8DD185167E000833990 /* SkateTrickDetectorTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -144,7 +144,7 @@
 		AABEB8CC185167E000833990 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				AABEB8CD185167E000833990 /* rfduinoBulkDataTransfer-Info.plist */,
+				AABEB8CD185167E000833990 /* SkateTrickDetector-Info.plist */,
 				AABEB8CE185167E000833990 /* InfoPlist.strings */,
 				AABEB8D1185167E000833990 /* main.m */,
 				AABEB8D3185167E000833990 /* rfduinoBulkDataTransfer-Prefix.pch */,
@@ -176,9 +176,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		AABEB8C1185167E000833990 /* rfduinoBulkDataTransfer */ = {
+		AABEB8C1185167E000833990 /* SkateTrickDetector */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AABEB8EE185167E000833990 /* Build configuration list for PBXNativeTarget "rfduinoBulkDataTransfer" */;
+			buildConfigurationList = AABEB8EE185167E000833990 /* Build configuration list for PBXNativeTarget "SkateTrickDetector" */;
 			buildPhases = (
 				AABEB8BE185167E000833990 /* Sources */,
 				AABEB8BF185167E000833990 /* Frameworks */,
@@ -188,14 +188,14 @@
 			);
 			dependencies = (
 			);
-			name = rfduinoBulkDataTransfer;
+			name = SkateTrickDetector;
 			productName = rfduinoBulkDataTransfer;
-			productReference = AABEB8C2185167E000833990 /* rfduinoBulkDataTransfer.app */;
+			productReference = AABEB8C2185167E000833990 /* SkateTrickDetector.app */;
 			productType = "com.apple.product-type.application";
 		};
-		AABEB8DC185167E000833990 /* rfduinoBulkDataTransferTests */ = {
+		AABEB8DC185167E000833990 /* SkateTrickDetectorTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AABEB8F1185167E000833990 /* Build configuration list for PBXNativeTarget "rfduinoBulkDataTransferTests" */;
+			buildConfigurationList = AABEB8F1185167E000833990 /* Build configuration list for PBXNativeTarget "SkateTrickDetectorTests" */;
 			buildPhases = (
 				AABEB8D9185167E000833990 /* Sources */,
 				AABEB8DA185167E000833990 /* Frameworks */,
@@ -206,9 +206,9 @@
 			dependencies = (
 				AABEB8E3185167E000833990 /* PBXTargetDependency */,
 			);
-			name = rfduinoBulkDataTransferTests;
+			name = SkateTrickDetectorTests;
 			productName = rfduinoBulkDataTransferTests;
-			productReference = AABEB8DD185167E000833990 /* rfduinoBulkDataTransferTests.xctest */;
+			productReference = AABEB8DD185167E000833990 /* SkateTrickDetectorTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -228,7 +228,7 @@
 					};
 				};
 			};
-			buildConfigurationList = AABEB8BD185167E000833990 /* Build configuration list for PBXProject "rfduinoBulkDataTransfer" */;
+			buildConfigurationList = AABEB8BD185167E000833990 /* Build configuration list for PBXProject "SkateTrickDetector" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -240,8 +240,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				AABEB8C1185167E000833990 /* rfduinoBulkDataTransfer */,
-				AABEB8DC185167E000833990 /* rfduinoBulkDataTransferTests */,
+				AABEB8C1185167E000833990 /* SkateTrickDetector */,
+				AABEB8DC185167E000833990 /* SkateTrickDetectorTests */,
 			);
 		};
 /* End PBXProject section */
@@ -293,7 +293,7 @@
 /* Begin PBXTargetDependency section */
 		AABEB8E3185167E000833990 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = AABEB8C1185167E000833990 /* rfduinoBulkDataTransfer */;
+			target = AABEB8C1185167E000833990 /* SkateTrickDetector */;
 			targetProxy = AABEB8E2185167E000833990 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -391,8 +391,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = 96JGT34257;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "rfduinoBulkDataTransfer/rfduinoBulkDataTransfer-Prefix.pch";
-				INFOPLIST_FILE = "rfduinoBulkDataTransfer/rfduinoBulkDataTransfer-Info.plist";
+				GCC_PREFIX_HEADER = "rfduinoBulkDataTransfer/SkateTrickDetector-Prefix.pch";
+				INFOPLIST_FILE = "rfduinoBulkDataTransfer/SkateTrickDetector-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.RFduino.rfduinoBulkDataTrangress;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -407,8 +407,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = 96JGT34257;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "rfduinoBulkDataTransfer/rfduinoBulkDataTransfer-Prefix.pch";
-				INFOPLIST_FILE = "rfduinoBulkDataTransfer/rfduinoBulkDataTransfer-Info.plist";
+				GCC_PREFIX_HEADER = "rfduinoBulkDataTransfer/SkateTrickDetector-Prefix.pch";
+				INFOPLIST_FILE = "rfduinoBulkDataTransfer/SkateTrickDetector-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.RFduino.rfduinoBulkDataTrangress;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -461,7 +461,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		AABEB8BD185167E000833990 /* Build configuration list for PBXProject "rfduinoBulkDataTransfer" */ = {
+		AABEB8BD185167E000833990 /* Build configuration list for PBXProject "SkateTrickDetector" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AABEB8EC185167E000833990 /* Debug */,
@@ -470,7 +470,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AABEB8EE185167E000833990 /* Build configuration list for PBXNativeTarget "rfduinoBulkDataTransfer" */ = {
+		AABEB8EE185167E000833990 /* Build configuration list for PBXNativeTarget "SkateTrickDetector" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AABEB8EF185167E000833990 /* Debug */,
@@ -479,7 +479,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AABEB8F1185167E000833990 /* Build configuration list for PBXNativeTarget "rfduinoBulkDataTransferTests" */ = {
+		AABEB8F1185167E000833990 /* Build configuration list for PBXNativeTarget "SkateTrickDetectorTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AABEB8F2185167E000833990 /* Debug */,
