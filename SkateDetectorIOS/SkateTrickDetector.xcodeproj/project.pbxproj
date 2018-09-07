@@ -135,7 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				AABEB8F4185167EC00833990 /* rfduino */,
-				AABEB8CB185167E000833990 /* rfduinoBulkDataTransfer */,
+				AABEB8CB185167E000833990 /* SkateTrickDetector */,
 				AABEB8C4185167E000833990 /* Frameworks */,
 				AABEB8C3185167E000833990 /* Products */,
 			);
@@ -167,7 +167,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		AABEB8CB185167E000833990 /* rfduinoBulkDataTransfer */ = {
+		AABEB8CB185167E000833990 /* SkateTrickDetector */ = {
 			isa = PBXGroup;
 			children = (
 				AABEB9061851682000833990 /* AppViewController.h */,
@@ -175,7 +175,7 @@
 				AABEB8D7185167E000833990 /* Images.xcassets */,
 				AABEB8CC185167E000833990 /* Supporting Files */,
 			);
-			path = rfduinoBulkDataTransfer;
+			path = SkateTrickDetector;
 			sourceTree = "<group>";
 		};
 		AABEB8CC185167E000833990 /* Supporting Files */ = {
