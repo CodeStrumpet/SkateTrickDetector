@@ -34,5 +34,9 @@
 
 @property(strong, nonatomic) RFduino *rfduino;
 @property(strong, nonatomic) NSMutableArray *dataStream;
+@property(strong, nonatomic) NSMutableString *dataString;
+@property(strong, nonatomic) UIButton *recordingButton;
+
+@property(nonatomic) bool isRecording;
 
 @end

@@ -177,6 +177,7 @@ const GLubyte Indices[] = {
     // Do any additional setup after loading the view from its nib.
     
     _dataStream = [NSMutableArray new];
+    _dataString = [NSMutableString string];
  
     [rfduino setDelegate:self];
     
@@ -202,6 +203,12 @@ const GLubyte Indices[] = {
     view.context = self.context;
     view.drawableMultisample = GLKViewDrawableMultisample4X;
     [self setupGL];
+    
+    _recordingButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [_recordingButton setTitle:@"Start" forState:UIControlStateNormal];
+    _recordingButton.frame = CGRectMake(200, 200, 150, 50);
+    [_recordingButton addTarget:self action:@selector(recordingButtonPressed:) forControlEvents:UIControlEventTouchDown];
+    [view addSubview:_recordingButton];
 }
 
 - (void)didReceiveMemoryWarning
@@ -215,6 +222,24 @@ const GLubyte Indices[] = {
     NSLog(@"disconnect pressed");
 
     [rfduino disconnect];
+}
+
+- (NSURL *)applicationDocumentsDirectory {
+    return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory
+                                                   inDomains:NSUserDomainMask] lastObject];
+}
+
+- (void)recordingButtonPressed:(id)sender {
+    _isRecording = !_isRecording;
+    
+    if (!_isRecording) {
+        NSLog(@"WRITE FILE!!!!!!!!!!!!!!!!!!!!!!!!!");
+        
+        NSString *path = [[self applicationDocumentsDirectory].path
+                          stringByAppendingPathComponent:@"skatetrickdetector.csv"];
+        [_dataString writeToFile:path atomically:YES
+                       encoding:NSUTF8StringEncoding error:nil];
+    }
 }
 
 - (void)didReceive:(NSData *)data
@@ -249,6 +274,10 @@ const GLubyte Indices[] = {
         _slerpMax = 0.25;
         _slerpStart = _quat;
         _slerpEnd = GLKQuaternionMake(_q0, _q1, _q2, _q3);
+        
+//        [_dataStream addObject:@[[NSNumber numberWithFloat:_q0], _q1, _q2, _q3]];
+        [_dataString appendString:[NSString stringWithFormat:@"%lld, %f, %f, %f, %f\n", (long long)([[NSDate date] timeIntervalSince1970] * 1000.0),  _q0, _q1, _q2, _q3]];
+       
     }
 
     return;
