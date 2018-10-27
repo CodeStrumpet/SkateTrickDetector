@@ -71,7 +71,7 @@
 		AABEB8CD185167E000833990 /* SkateTrickDetector-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SkateTrickDetector-Info.plist"; sourceTree = "<group>"; };
 		AABEB8CF185167E000833990 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AABEB8D1185167E000833990 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		AABEB8D3185167E000833990 /* rfduinoBulkDataTransfer-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "rfduinoBulkDataTransfer-Prefix.pch"; sourceTree = "<group>"; };
+		AABEB8D3185167E000833990 /* SkateTrickDetector-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SkateTrickDetector-Prefix.pch"; sourceTree = "<group>"; };
 		AABEB8D7185167E000833990 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		AABEB8DD185167E000833990 /* SkateTrickDetectorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SkateTrickDetectorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AABEB8DE185167E000833990 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -184,7 +184,7 @@
 				AABEB8CD185167E000833990 /* SkateTrickDetector-Info.plist */,
 				AABEB8CE185167E000833990 /* InfoPlist.strings */,
 				AABEB8D1185167E000833990 /* main.m */,
-				AABEB8D3185167E000833990 /* rfduinoBulkDataTransfer-Prefix.pch */,
+				AABEB8D3185167E000833990 /* SkateTrickDetector-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -456,8 +456,8 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "rfduinoBulkDataTransfer/SkateTrickDetector-Prefix.pch";
-				INFOPLIST_FILE = "rfduinoBulkDataTransfer/SkateTrickDetector-Info.plist";
+				GCC_PREFIX_HEADER = "SkateTrickDetector/SkateTrickDetector-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/SkateTrickDetector/SkateTrickDetector-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.RFduino.rfduinoBulkDataTrangress;
@@ -477,8 +477,8 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "rfduinoBulkDataTransfer/SkateTrickDetector-Prefix.pch";
-				INFOPLIST_FILE = "rfduinoBulkDataTransfer/SkateTrickDetector-Info.plist";
+				GCC_PREFIX_HEADER = "SkateTrickDetector/SkateTrickDetector-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/SkateTrickDetector/SkateTrickDetector-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.RFduino.rfduinoBulkDataTrangress;

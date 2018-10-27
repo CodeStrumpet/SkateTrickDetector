@@ -33,5 +33,6 @@
 }
 
 @property(strong, nonatomic) RFduino *rfduino;
+@property(strong, nonatomic) NSMutableArray *dataStream;
 
 @end

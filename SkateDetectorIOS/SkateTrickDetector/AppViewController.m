@@ -175,6 +175,8 @@ const GLubyte Indices[] = {
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    _dataStream = [NSMutableArray new];
  
     [rfduino setDelegate:self];
     
