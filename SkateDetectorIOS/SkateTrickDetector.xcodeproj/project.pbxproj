@@ -35,6 +35,19 @@
 		EC8724C321421589004768FA /* CocoaAsyncSocket.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EC8724B92142148D004768FA /* CocoaAsyncSocket.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EC8724C421421589004768FA /* RMQClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC8724BA2142148D004768FA /* RMQClient.framework */; };
 		EC8724C521421589004768FA /* RMQClient.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EC8724BA2142148D004768FA /* RMQClient.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EC99C8C62185513B005DA5C4 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = EC99C8C42185513B005DA5C4 /* GCDAsyncSocket.m */; };
+		EC99C8C72185513B005DA5C4 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = EC99C8C52185513B005DA5C4 /* GCDAsyncUdpSocket.m */; };
+		EC99C8CF2185516A005DA5C4 /* LogConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = EC99C8C921855168005DA5C4 /* LogConnection.m */; };
+		EC99C8D02185516A005DA5C4 /* DinoLaserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = EC99C8CA21855168005DA5C4 /* DinoLaserSettings.m */; };
+		EC99C8D12185516A005DA5C4 /* UDPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = EC99C8CB21855169005DA5C4 /* UDPConnection.m */; };
+		EC99C8D42185535D005DA5C4 /* FlipsideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC99C8D22185535B005DA5C4 /* FlipsideViewController.xib */; };
+		EC99C8D52185535D005DA5C4 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC99C8D32185535C005DA5C4 /* MainViewController.xib */; };
+		EC99C8DA21855371005DA5C4 /* FlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC99C8D62185536C005DA5C4 /* FlipsideViewController.m */; };
+		EC99C8DB21855371005DA5C4 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC99C8D82185536E005DA5C4 /* MainViewController.m */; };
+		EC99C8DE218553E5005DA5C4 /* MotionController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC99C8DC218553E4005DA5C4 /* MotionController.m */; };
+		EC99C8E021855450005DA5C4 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC99C8DF21855450005DA5C4 /* CoreMotion.framework */; };
+		EC99C8E221855460005DA5C4 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC99C8E121855460005DA5C4 /* CFNetwork.framework */; };
+		EC99C8E421855470005DA5C4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC99C8E32185546F005DA5C4 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +109,28 @@
 		EC8724B92142148D004768FA /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaAsyncSocket.framework; path = Carthage/Build/iOS/CocoaAsyncSocket.framework; sourceTree = "<group>"; };
 		EC8724BA2142148D004768FA /* RMQClient.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RMQClient.framework; path = Carthage/Build/iOS/RMQClient.framework; sourceTree = "<group>"; };
 		EC8724BB2142148E004768FA /* JKVValue.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JKVValue.framework; path = Carthage/Build/iOS/JKVValue.framework; sourceTree = "<group>"; };
+		EC99C8C22185513A005DA5C4 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
+		EC99C8C32185513A005DA5C4 /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
+		EC99C8C42185513B005DA5C4 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
+		EC99C8C52185513B005DA5C4 /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
+		EC99C8C821855168005DA5C4 /* DinoLaserSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DinoLaserSettings.h; sourceTree = "<group>"; };
+		EC99C8C921855168005DA5C4 /* LogConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogConnection.m; sourceTree = "<group>"; };
+		EC99C8CA21855168005DA5C4 /* DinoLaserSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DinoLaserSettings.m; sourceTree = "<group>"; };
+		EC99C8CB21855169005DA5C4 /* UDPConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UDPConnection.m; sourceTree = "<group>"; };
+		EC99C8CC21855169005DA5C4 /* LogConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogConnection.h; sourceTree = "<group>"; };
+		EC99C8CD21855169005DA5C4 /* CommonTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonTypes.h; sourceTree = "<group>"; };
+		EC99C8CE2185516A005DA5C4 /* UDPConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UDPConnection.h; sourceTree = "<group>"; };
+		EC99C8D22185535B005DA5C4 /* FlipsideViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FlipsideViewController.xib; sourceTree = "<group>"; };
+		EC99C8D32185535C005DA5C4 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		EC99C8D62185536C005DA5C4 /* FlipsideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlipsideViewController.m; sourceTree = "<group>"; };
+		EC99C8D72185536D005DA5C4 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		EC99C8D82185536E005DA5C4 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		EC99C8D92185536F005DA5C4 /* FlipsideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlipsideViewController.h; sourceTree = "<group>"; };
+		EC99C8DC218553E4005DA5C4 /* MotionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MotionController.m; sourceTree = "<group>"; };
+		EC99C8DD218553E4005DA5C4 /* MotionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MotionController.h; sourceTree = "<group>"; };
+		EC99C8DF21855450005DA5C4 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		EC99C8E121855460005DA5C4 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		EC99C8E32185546F005DA5C4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,12 +138,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC8724A22141EBEC004768FA /* GLKit.framework in Frameworks */,
+				EC8724A62141EC08004768FA /* QuartzCore.framework in Frameworks */,
+				EC99C8E421855470005DA5C4 /* CoreLocation.framework in Frameworks */,
+				EC99C8E221855460005DA5C4 /* CFNetwork.framework in Frameworks */,
+				EC99C8E021855450005DA5C4 /* CoreMotion.framework in Frameworks */,
 				EC8724BE2142148E004768FA /* JKVValue.framework in Frameworks */,
 				EC8724BC2142148E004768FA /* CocoaAsyncSocket.framework in Frameworks */,
 				EC8724BF21421549004768FA /* JKVValue.framework in Frameworks */,
-				EC8724A62141EC08004768FA /* QuartzCore.framework in Frameworks */,
 				EC8724A42141EC01004768FA /* OpenGLES.framework in Frameworks */,
-				EC8724A22141EBEC004768FA /* GLKit.framework in Frameworks */,
 				AABEB8C8185167E000833990 /* CoreGraphics.framework in Frameworks */,
 				AABEB8CA185167E000833990 /* UIKit.framework in Frameworks */,
 				EC8724BD2142148E004768FA /* RMQClient.framework in Frameworks */,
@@ -153,6 +191,9 @@
 		AABEB8C4185167E000833990 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EC99C8E32185546F005DA5C4 /* CoreLocation.framework */,
+				EC99C8E121855460005DA5C4 /* CFNetwork.framework */,
+				EC99C8DF21855450005DA5C4 /* CoreMotion.framework */,
 				EC8724B92142148D004768FA /* CocoaAsyncSocket.framework */,
 				EC8724BB2142148E004768FA /* JKVValue.framework */,
 				EC8724BA2142148D004768FA /* RMQClient.framework */,
@@ -205,6 +246,25 @@
 				AABEB8FE185167EC00833990 /* RFduinoManagerDelegate.h */,
 				AABEB8FF185167EC00833990 /* ScanViewController.h */,
 				AABEB900185167EC00833990 /* ScanViewController.m */,
+				EC99C8C22185513A005DA5C4 /* GCDAsyncSocket.h */,
+				EC99C8C42185513B005DA5C4 /* GCDAsyncSocket.m */,
+				EC99C8C32185513A005DA5C4 /* GCDAsyncUdpSocket.h */,
+				EC99C8C52185513B005DA5C4 /* GCDAsyncUdpSocket.m */,
+				EC99C8CE2185516A005DA5C4 /* UDPConnection.h */,
+				EC99C8CB21855169005DA5C4 /* UDPConnection.m */,
+				EC99C8CC21855169005DA5C4 /* LogConnection.h */,
+				EC99C8C921855168005DA5C4 /* LogConnection.m */,
+				EC99C8CD21855169005DA5C4 /* CommonTypes.h */,
+				EC99C8C821855168005DA5C4 /* DinoLaserSettings.h */,
+				EC99C8CA21855168005DA5C4 /* DinoLaserSettings.m */,
+				EC99C8D92185536F005DA5C4 /* FlipsideViewController.h */,
+				EC99C8D62185536C005DA5C4 /* FlipsideViewController.m */,
+				EC99C8D72185536D005DA5C4 /* MainViewController.h */,
+				EC99C8D82185536E005DA5C4 /* MainViewController.m */,
+				EC99C8DD218553E4005DA5C4 /* MotionController.h */,
+				EC99C8DC218553E4005DA5C4 /* MotionController.m */,
+				EC99C8D22185535B005DA5C4 /* FlipsideViewController.xib */,
+				EC99C8D32185535C005DA5C4 /* MainViewController.xib */,
 			);
 			name = rfduino;
 			path = ../rfduino;
@@ -292,6 +352,8 @@
 			files = (
 				AABEB8D0185167E000833990 /* InfoPlist.strings in Resources */,
 				EC8724A82141F0CC004768FA /* tile_floor.png in Resources */,
+				EC99C8D52185535D005DA5C4 /* MainViewController.xib in Resources */,
+				EC99C8D42185535D005DA5C4 /* FlipsideViewController.xib in Resources */,
 				AABEB8D8185167E000833990 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -332,12 +394,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC99C8CF2185516A005DA5C4 /* LogConnection.m in Sources */,
+				EC99C8C62185513B005DA5C4 /* GCDAsyncSocket.m in Sources */,
+				EC99C8D02185516A005DA5C4 /* DinoLaserSettings.m in Sources */,
+				EC99C8C72185513B005DA5C4 /* GCDAsyncUdpSocket.m in Sources */,
 				AABEB902185167EC00833990 /* CustomCellBackground.m in Sources */,
 				AABEB904185167EC00833990 /* RfduinoManager.m in Sources */,
 				AABEB8D2185167E000833990 /* main.m in Sources */,
+				EC99C8D12185516A005DA5C4 /* UDPConnection.m in Sources */,
+				EC99C8DE218553E5005DA5C4 /* MotionController.m in Sources */,
 				AABEB905185167EC00833990 /* ScanViewController.m in Sources */,
 				AABEB901185167EC00833990 /* AppDelegate.m in Sources */,
 				AABEB9081851682000833990 /* AppViewController.m in Sources */,
+				EC99C8DB21855371005DA5C4 /* MainViewController.m in Sources */,
+				EC99C8DA21855371005DA5C4 /* FlipsideViewController.m in Sources */,
 				AABEB903185167EC00833990 /* RFduino.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

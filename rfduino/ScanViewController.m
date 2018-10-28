@@ -35,6 +35,8 @@
 
 #import "CustomCellBackground.h"
 
+#import "MainViewController.h"
+
 @interface ScanViewController()
 {
     bool editingRow;
@@ -306,11 +308,17 @@
 
 - (void)didLoadServiceRFduino:(RFduino *)rfduino
 {
+    loadService = true;
     AppViewController *viewController = [[AppViewController alloc] init];
     viewController.rfduino = rfduino;
 
-    loadService = true;
-    [[self navigationController] pushViewController:viewController animated:YES];
+
+    
+  [[self navigationController] pushViewController:viewController animated:YES];
+    
+    //MainViewController *mainViewController = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:[NSBundle mainBundle]];
+    //mainViewController.rfduino = rfduino;
+    //[[self navigationController] pushViewController:mainViewController animated:YES];
 }
 
 - (void)didDisconnectRFduino:(RFduino *)rfduino
