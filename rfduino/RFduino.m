@@ -163,7 +163,7 @@ static void incrementUuid16(CBUUID *uuid, unsigned char amount)
 
 - (void)peripheral:(CBPeripheral *)aPeripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
 {
-    NSLog(@"didUpdateValueForCharacteristic");
+//    NSLog(@"didUpdateValueForCharacteristic");
     if ([characteristic.UUID isEqual:receive_uuid]) {
         SEL didReceive = @selector(didReceive:);
         if ([delegate respondsToSelector:didReceive]) {

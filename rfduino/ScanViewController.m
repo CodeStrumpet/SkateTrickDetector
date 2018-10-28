@@ -309,16 +309,15 @@
 - (void)didLoadServiceRFduino:(RFduino *)rfduino
 {
     loadService = true;
-    AppViewController *viewController = [[AppViewController alloc] init];
-    viewController.rfduino = rfduino;
 
 
+//    AppViewController *viewController = [[AppViewController alloc] init];
+//    viewController.rfduino = rfduino;
+//    [[self navigationController] pushViewController:viewController animated:YES];
     
-  [[self navigationController] pushViewController:viewController animated:YES];
-    
-    //MainViewController *mainViewController = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:[NSBundle mainBundle]];
-    //mainViewController.rfduino = rfduino;
-    //[[self navigationController] pushViewController:mainViewController animated:YES];
+    MainViewController *mainViewController = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:[NSBundle mainBundle]];
+    mainViewController.rfduino = rfduino;
+    [[self navigationController] pushViewController:mainViewController animated:YES];
 }
 
 - (void)didDisconnectRFduino:(RFduino *)rfduino

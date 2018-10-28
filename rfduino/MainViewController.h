@@ -10,7 +10,7 @@
 #import "RFduino.h"
 #import <GLKit/GLKit.h>
 
-@interface MainViewController : GLKViewController <FlipsideViewControllerDelegate, UIAlertViewDelegate, RFduinoDelegate> {
+@interface MainViewController : UIViewController <FlipsideViewControllerDelegate, UIAlertViewDelegate, RFduinoDelegate> {
 
 }
 

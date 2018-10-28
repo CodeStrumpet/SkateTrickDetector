@@ -822,6 +822,9 @@ void sendQuat(){
   else{packetCount = 0x00;}
   */
   RFduinoBLE.send(55);
+
+  RFduinoBLE.send(millis());
+
   
   // following conversion adapted from Invensense's TeaPot example
   q[0] = (long) ((((unsigned long) processed_packet[0]) << 8) + ((unsigned long) processed_packet[1]));
@@ -837,6 +840,7 @@ void sendQuat(){
     RFduinoBLE.sendFloat(q[i]);
     
   }
+
   
   serialPrintFloatArr(q, 4);
 

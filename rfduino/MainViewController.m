@@ -18,66 +18,6 @@
 
 #define LOG_BUFFER_SIZE 300
 
-typedef struct {
-    float Position[3];
-    float Color[4];
-    float TexCoord[2];
-} Vertex;
-
-const Vertex Vertices[] = {
-    // Front
-    {{1, -1, 1}, {1, 0, 0, 1}, {1, 0}},
-    {{1, 1, 1}, {0, 1, 0, 1}, {1, 1}},
-    {{-1, 1, 1}, {0, 0, 1, 1}, {0, 1}},
-    {{-1, -1, 1}, {0, 0, 0, 1}, {0, 0}},
-    // Back
-    {{1, 1, -1}, {1, 0, 0, 1}, {0, 1}},
-    {{-1, -1, -1}, {0, 1, 0, 1}, {1, 0}},
-    {{1, -1, -1}, {0, 0, 1, 1}, {0, 0}},
-    {{-1, 1, -1}, {0, 0, 0, 1}, {1, 1}},
-    // Left
-    {{-1, -1, 1}, {1, 0, 0, 1}, {1, 0}},
-    {{-1, 1, 1}, {0, 1, 0, 1}, {1, 1}},
-    {{-1, 1, -1}, {0, 0, 1, 1}, {0, 1}},
-    {{-1, -1, -1}, {0, 0, 0, 1}, {0, 0}},
-    // Right
-    {{1, -1, -1}, {1, 0, 0, 1}, {1, 0}},
-    {{1, 1, -1}, {0, 1, 0, 1}, {1, 1}},
-    {{1, 1, 1}, {0, 0, 1, 1}, {0, 1}},
-    {{1, -1, 1}, {0, 0, 0, 1}, {0, 0}},
-    // Top
-    {{1, 1, 1}, {1, 0, 0, 1}, {1, 0}},
-    {{1, 1, -1}, {0, 1, 0, 1}, {1, 1}},
-    {{-1, 1, -1}, {0, 0, 1, 1}, {0, 1}},
-    {{-1, 1, 1}, {0, 0, 0, 1}, {0, 0}},
-    // Bottom
-    {{1, -1, -1}, {1, 0, 0, 1}, {1, 0}},
-    {{1, -1, 1}, {0, 1, 0, 1}, {1, 1}},
-    {{-1, -1, 1}, {0, 0, 1, 1}, {0, 1}},
-    {{-1, -1, -1}, {0, 0, 0, 1}, {0, 0}}
-};
-
-const GLubyte Indices[] = {
-    // Front
-    0, 1, 2,
-    2, 3, 0,
-    // Back
-    4, 6, 5,
-    4, 5, 7,
-    // Left
-    8, 9, 10,
-    10, 11, 8,
-    // Right
-    12, 13, 14,
-    14, 15, 12,
-    // Top
-    16, 17, 18,
-    18, 19, 16,
-    // Bottom
-    20, 21, 22,
-    22, 23, 20
-};
-
 
 @interface MainViewController ()
 
@@ -147,7 +87,7 @@ const GLubyte Indices[] = {
     
     // begin timer
     double timeInterval = DEFAULT_UPDATE_INTERVAL;
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:timeInterval target:self selector:@selector(timerFired:) userInfo:nil repeats:YES];
+//    self.timer = [NSTimer scheduledTimerWithTimeInterval:timeInterval target:self selector:@selector(timerFired:) userInfo:nil repeats:YES];
     
     
     // Make view adjustments
@@ -325,13 +265,13 @@ const GLubyte Indices[] = {
     if (length == 1) {
         char c;
         [data getBytes:&c length:1];
-        NSLog(@"RecievedRX %c", c);
+//        NSLog(@"RecievedRX %c", c);
         _currQuaternionIndex = 0;
         
     } else {
         float z;
         [data getBytes:&z length:sizeof(float)];
-        NSLog(@"RecievedRX %f", z);
+//        NSLog(@"RecievedRX %f", z);
         if (_currQuaternionIndex == 0) {
             _q0 = z;
             _currQuaternionIndex++;
@@ -345,22 +285,26 @@ const GLubyte Indices[] = {
             _q3 = z;
             _currQuaternionIndex++;
         }
-        NSLog(@"UPDATE QUATERNION");
+//        NSLog(@"UPDATE QUATERNION");
         _slerping = YES;
         _slerpCur = 0;
         _slerpMax = 0.25;
         _slerpStart = _quat;
         _slerpEnd = GLKQuaternionMake(_q0, _q1, _q2, _q3);
         
-        NSString *message = [NSString stringWithFormat:@"%lld, %f, %f, %f, %f\n", (long long)([[NSDate date] timeIntervalSince1970] * 1000.0),  _q0, _q1, _q2, _q3];
+        NSString *message = [NSString stringWithFormat:@"%lld,%f,%f,%f,%f,%@\n", (long long)([[NSDate date] timeIntervalSince1970] * 1000.0),  _q0, _q1, _q2, _q3, self.motionController.markerString];
         
         if (isRecording) {
+            
+            [self appendToLog:message];
+            // pass update to logConnection if it exists
+            [self.logConnection printLineToLog:message];
+            
+            // increment the tag
+            self.tag++;
+            
             [self.udpConnection sendMessage:message withTag:tag];
         }
-
-        //        [_dataStream addObject:@[[NSNumber numberWithFloat:_q0], _q1, _q2, _q3]];
-//        [_dataString appendString:[NSString stringWithFormat:@"%lld, %f, %f, %f, %f\n", (long long)([[NSDate date] timeIntervalSince1970] * 1000.0),  _q0, _q1, _q2, _q3]];
-        
     }
 }
 
