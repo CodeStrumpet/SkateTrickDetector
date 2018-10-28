@@ -17,6 +17,8 @@ vidfig=1;
 figure(vidfig);clf;
 vidObj.CurrentTime = 0;
 
+subplot(211);
+plot(1,1);
 % Create an axes
 currAxes = axes;
 

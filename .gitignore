@@ -185,3 +185,4 @@ skateStream/bin/skateStreamDebug.app
 SkateDetectorIOS/.DS_Store
 skateStream/bin/data/.gitkeep
 iosMMU/accel.csv
+data/
