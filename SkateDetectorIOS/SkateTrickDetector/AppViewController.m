@@ -129,6 +129,10 @@ const GLubyte Indices[] = {
     float _q1;
     float _q2;
     float _q3;
+    long _time;
+    float _ax, _ay, _az;
+    float _gx, _gy, _gz;
+    float _mx, _my, _mz;
 }
 
 @property (strong, nonatomic) EAGLContext *context;
@@ -231,6 +235,7 @@ const GLubyte Indices[] = {
 
 - (void)recordingButtonPressed:(id)sender {
     _isRecording = !_isRecording;
+    [_recordingButton setTitle:_isRecording ? @"Stop" : @"Start" forState:UIControlStateNormal];
     
     if (!_isRecording) {
         NSLog(@"WRITE FILE!!!!!!!!!!!!!!!!!!!!!!!!!");
@@ -245,6 +250,73 @@ const GLubyte Indices[] = {
 - (void)didReceive:(NSData *)data
 {
     int length = [data length];
+    
+    char *bytePtr = (char *)[data bytes];
+    unsigned int specialId = (unsigned int)*bytePtr;
+    int offset = 1;
+    
+    if (specialId == 1) {
+        
+        //        _time = (long) *(long *)(bytePtr + offset);
+        //        offset += sizeof(long);
+        
+        _q0 = (float) *(float *)(bytePtr + offset);
+        offset += sizeof(float);
+        _q1 = (float) *(float *)(bytePtr + offset);
+        offset += sizeof(float);
+        
+    } else if (specialId == 2) {
+        
+        _q2 = (float) *(float *)(bytePtr + offset);
+        offset += sizeof(float);
+        _q3 = (float) *(float *)(bytePtr + offset);
+        offset += sizeof(float);
+    } else if (specialId == 3) {
+        
+        _ax = (float) *(float *)(bytePtr + offset);
+        offset += sizeof(float);
+        _ay = (float) *(float *)(bytePtr + offset);
+        offset += sizeof(float);
+        _az = (float) *(float *)(bytePtr + offset);
+        offset += sizeof(float);
+    } else if (specialId == 4) {
+        _gx = (float) *(float *)(bytePtr + offset);
+        offset += sizeof(float);
+        _gy = (float) *(float *)(bytePtr + offset);
+        offset += sizeof(float);
+        _gz = (float) *(float *)(bytePtr + offset);
+        offset += sizeof(float);
+        
+    } else if (specialId == 5) {
+        _mx = (float) *(float *)(bytePtr + offset);
+        offset += sizeof(float);
+        _my = (float) *(float *)(bytePtr + offset);
+        offset += sizeof(float);
+        _mz = (float) *(float *)(bytePtr + offset);
+        offset += sizeof(float);
+        
+        NSString *message = [NSString stringWithFormat:@"%lld,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f\n", (long long)([[NSDate date] timeIntervalSince1970] * 1000.0),  _q0, _q1, _q2, _q3, _ax, _ay, _az, _gx, _gy, _gz, _mx, _my, _mz];
+                //NSLog(@"Message: %@", message);
+        
+//        NSLog(@"UPDATE QUATERNION");
+        _slerping = YES;
+        _slerpCur = 0;
+        _slerpMax = 0.25;
+        _slerpStart = _quat;
+        _slerpEnd = GLKQuaternionMake(_q0, _q1, _q2, _q3);
+        
+        if (_isRecording) {
+            [_dataString appendString:message];
+        }
+    }
+    
+    return;
+    
+    
+    
+    
+    
+    
     if (length == 1) {
         char c;
         [data getBytes:&c length:1];

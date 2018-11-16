@@ -55,6 +55,9 @@
     float _q1;
     float _q2;
     float _q3;
+    long _time;
+    float _ax, _ay, _az;
+    float _gx, _gy, _gz;
 }
 
 @property (strong, nonatomic) EAGLContext *context;
@@ -262,10 +265,69 @@
 - (void)didReceive:(NSData *)data
 {
     int length = [data length];
+    NSLog(@"Received Data %d: %@", length, [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+    
+//    int offset = 0;
+//
+//    unsigned int marker;
+//    [data getBytes:&marker range:NSMakeRange(0, sizeof(unsigned int))];
+//
+//    NSLog(@"Marker %d", marker);
+    
+    
+    char *bytePtr = (char *)[data bytes];
+    unsigned int specialId = (unsigned int)*bytePtr;
+    int offset = 1;
+    
+    if (specialId == 1) {
+        
+//        _time = (long) *(long *)(bytePtr + offset);
+//        offset += sizeof(long);
+        
+        _q0 = (float) *(float *)(bytePtr + offset);
+        offset += sizeof(float);
+        _q1 = (float) *(float *)(bytePtr + offset);
+        offset += sizeof(float);
+
+    } else if (specialId == 2) {
+        
+        _q2 = (float) *(float *)(bytePtr + offset);
+        offset += sizeof(float);
+        _q3 = (float) *(float *)(bytePtr + offset);
+        offset += sizeof(float);
+    } else if (specialId == 3) {
+        
+        _ax = (float) *(float *)(bytePtr + offset);
+        offset += sizeof(float);
+        _ay = (float) *(float *)(bytePtr + offset);
+        offset += sizeof(float);
+        _az = (float) *(float *)(bytePtr + offset);
+        offset += sizeof(float);
+    } else if (specialId == 4) {
+        _gx = (float) *(float *)(bytePtr + offset);
+        offset += sizeof(float);
+        _gy = (float) *(float *)(bytePtr + offset);
+        offset += sizeof(float);
+        _gz = (float) *(float *)(bytePtr + offset);
+        offset += sizeof(float);
+        
+        NSString *message = [NSString stringWithFormat:@"%lld,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%@\n", (long long)([[NSDate date] timeIntervalSince1970] * 1000.0),  _q0, _q1, _q2, _q3, _ax, _ay, _az, _gx, _gy, _gz, self.motionController.markerString];
+        
+        NSLog(@"Message: %@", message);
+    }
+        
+//
+//        NSString *message = [NSString stringWithFormat:@"%lld,%f,%f,%f,%f,%@\n", (long long)([[NSDate date] timeIntervalSince1970] * 1000.0),  _q0, _q1, _q2, _q3, self.motionController.markerString];
+//
+//        NSLog(@"Message: %@", message);
+//    }
+    
+    return;
+    
     if (length == 1) {
         char c;
         [data getBytes:&c length:1];
-//        NSLog(@"RecievedRX %c", c);
+//        NSLog(@"Recieved Marker %c", c);
         _currQuaternionIndex = 0;
         
     } else {

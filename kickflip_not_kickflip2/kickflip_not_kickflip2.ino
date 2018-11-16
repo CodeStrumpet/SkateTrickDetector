@@ -1,4 +1,4 @@
-/*****************************************************************
+  /*****************************************************************
 MPU9150_AHRS.ino
 SFE_MPU9150 Library AHRS Data Fusion Example Code
 Kris Winer for Sparkfun Electronics
@@ -117,8 +117,8 @@ void setup()
     RFduinoBLE.deviceName = "TrickDetector";
     RFduinoBLE.begin();   
 
-    // Wire.begin();
-    Wire.beginOnPins(4, 5);
+    Wire.begin();
+    // Wire.beginOnPins(4, 5);    
     delay(1);   
 
     // initialize MPU6050 device
@@ -182,16 +182,25 @@ void loop()
 {
          if(mpu.getIntDataReadyStatus() == 1) { // wait for data ready status register to update all data registers
             mcount++;
+
+            mpu.getMotion9(&a1, &a2, &a3, &g1, &g2, &g3, &m1, &m2, &m3);
+
+
            // read the raw sensor data
-            mpu.getAcceleration  ( &a1, &a2, &a3  );
+            // mpu.getAcceleration  ( &a1, &a2, &a3  );
             ax = a1*2.0f/32768.0f; // 2 g full range for accelerometer
             ay = a2*2.0f/32768.0f;
             az = a3*2.0f/32768.0f;
 
-            mpu.getRotation  ( &g1, &g2, &g3  );
+            // mpu.getRotation  ( &g1, &g2, &g3  );
             gx = g1*250.0f/32768.0f; // 250 deg/s full range for gyroscope
             gy = g2*250.0f/32768.0f;
             gz = g3*250.0f/32768.0f;
+
+            mx = m1*10.0f*1229.0f/4096.0f + 18.0f; // milliGauss (1229 microTesla per 2^12 bits, 10 mG per microTesla)
+            my = m2*10.0f*1229.0f/4096.0f + 70.0f; // apply calibration offsets in mG that correspond to your environment and magnetometer
+            mz = m3*10.0f*1229.0f/4096.0f + 270.0f;
+
 //  The gyros and accelerometers can in principle be calibrated in addition to any factory calibration but they are generally
 //  pretty accurate. You can check the accelerometer by making sure the reading is +1 g in the positive direction for each axis.
 //  The gyro should read zero for each axis when the sensor is at rest. Small or zero adjustment should be needed for these sensors.
@@ -200,19 +209,19 @@ void loop()
 //  the maximum and minimum readings (generally achieved at the North magnetic direction). The average of the sum divided by two
 //  should provide a pretty good calibration offset. Don't forget that for the MPU9150, the magnetometer x- and y-axes are switched 
 //  compared to the gyro and accelerometer!
-            if (mcount > 1000/MagRate) {  // this is a poor man's way of setting the magnetometer read rate (see below) 
-                // read raw heading measurements from device
-                mag.getHeading(&m1, &m2, &m3);
-                // mpu.getMag( &m1, &m2, &m3 );
-                // mx = m1*10.0f*1229.0f/4096.0f + 18.0f; // milliGauss (1229 microTesla per 2^12 bits, 10 mG per microTesla)
-                // my = m2*10.0f*1229.0f/4096.0f + 70.0f; // apply calibration offsets in mG that correspond to your environment and magnetometer
-                // mz = m3*10.0f*1229.0f/4096.0f + 270.0f;
+            // if (mcount > 1000/MagRate) {  // this is a poor man's way of setting the magnetometer read rate (see below) 
+            //     // read raw heading measurements from device
+            //     mag.getHeading(&m1, &m2, &m3);
+            //     // mpu.getMag( &m1, &m2, &m3 );
+            //     // mx = m1*10.0f*1229.0f/4096.0f + 18.0f; // milliGauss (1229 microTesla per 2^12 bits, 10 mG per microTesla)
+            //     // my = m2*10.0f*1229.0f/4096.0f + 70.0f; // apply calibration offsets in mG that correspond to your environment and magnetometer
+            //     // mz = m3*10.0f*1229.0f/4096.0f + 270.0f;
 
-                mx = 1.0;
-                my = 1.0;
-                mz = 1.0;
-                mcount = 0;
-            }           
+            //     mx = 1.0;
+            //     my = 1.0;
+            //     mz = 1.0;
+            //     mcount = 0;
+            // }           
          }
    
   now = micros();
@@ -226,27 +235,47 @@ void loop()
   // This is ok by aircraft orientation standards!  
   // Pass gyro rate as rad/s
    MadgwickQuaternionUpdate(ax, ay, az, gx*PI/180.0f, gy*PI/180.0f, gz*PI/180.0f,  my,  mx, mz);
-// MahonyQuaternionUpdate(ax, ay, az, gx*PI/180.0f, gy*PI/180.0f, gz*PI/180.0f, my, mx, mz);
+    // MahonyQuaternionUpdate(ax, ay, az, gx*PI/180.0f, gy*PI/180.0f, gz*PI/180.0f, my, mx, mz);
 
     // Serial print and/or display at 0.5 s rate independent of data rates
     delt_t = millis() - count;
 
-    if (delt_t > 0) { // update LCD once per half-second independent of read rate
+    if (delt_t > 0) {
 
-    Serial.print("ax = "); Serial.print((int)1000*ax);  
-    Serial.print(" ay = "); Serial.print((int)1000*ay); 
-    Serial.print(" az = "); Serial.print((int)1000*az); Serial.println(" mg");
-    Serial.print("gx = "); Serial.print( gx, 2); 
-    Serial.print(" gy = "); Serial.print( gy, 2); 
-    Serial.print(" gz = "); Serial.print( gz, 2); Serial.println(" deg/s");
-    Serial.print("mx = "); Serial.print( (int)mx ); 
-    Serial.print(" my = "); Serial.print( (int)my ); 
-    Serial.print(" mz = "); Serial.print( (int)mz ); Serial.println(" mG");
+    Serial.print("Raw:");
+    Serial.print(ax);
+    Serial.print(',');
+    Serial.print(ay);
+    Serial.print(',');
+    Serial.print(az);
+    Serial.print(',');
+    Serial.print(gx);
+    Serial.print(',');
+    Serial.print(gy);
+    Serial.print(',');
+    Serial.print(gz);
+    Serial.print(',');
+    Serial.print(mx);
+    Serial.print(',');
+    Serial.print(my);
+    Serial.print(',');
+    Serial.print(mz);
+    Serial.println();  
+
+    // Serial.print("ax = "); Serial.print((int)1000*ax);  
+    // Serial.print(" ay = "); Serial.print((int)1000*ay); 
+    // Serial.print(" az = "); Serial.print((int)1000*az); Serial.println(" mg");
+    // Serial.print("gx = "); Serial.print( gx, 2); 
+    // Serial.print(" gy = "); Serial.print( gy, 2); 
+    // Serial.print(" gz = "); Serial.print( gz, 2); Serial.println(" deg/s");
+    // Serial.print("mx = "); Serial.print( (int)mx ); 
+    // Serial.print(" my = "); Serial.print( (int)my ); 
+    // Serial.print(" mz = "); Serial.print( (int)mz ); Serial.println(" mG");
     
-    Serial.print("q0 = "); Serial.print(q[0]);
-    Serial.print(" qx = "); Serial.print(q[1]); 
-    Serial.print(" qy = "); Serial.print(q[2]); 
-    Serial.print(" qz = "); Serial.println(q[3]); 
+    // Serial.print("q0 = "); Serial.print(q[0]);
+    // Serial.print(" qx = "); Serial.print(q[1]); 
+    // Serial.print(" qy = "); Serial.print(q[2]); 
+    // Serial.print(" qz = "); Serial.println(q[3]); 
 
     // RFduinoBLE.send(55);
     // // RFduinoBLE.send(millis());
@@ -310,7 +339,7 @@ void loop()
 
     RFduinoBLE.send(buf, bufSize);
 
-        // reset ptr
+    // reset ptr
     ptr = buf;
 
     *ptr = 4;
@@ -321,6 +350,21 @@ void loop()
     *(float*)ptr = gy;
     ptr += sizeof(float);
     *(float*)ptr = gz;
+    ptr += sizeof(float);
+
+    RFduinoBLE.send(buf, bufSize);
+
+    // reset ptr
+    ptr = buf;
+
+    *ptr = 5;
+    ptr++;
+
+    *(float*)ptr = mx;
+    ptr += sizeof(float);
+    *(float*)ptr = my;
+    ptr += sizeof(float);
+    *(float*)ptr = mz;
     ptr += sizeof(float);
 
     RFduinoBLE.send(buf, bufSize);
@@ -376,14 +420,14 @@ void loop()
     yaw   *= 180.0f / PI - 13.8; // Declination at Danville, California is 13 degrees 48 minutes and 47 seconds on 2014-04-04
     roll  *= 180.0f / PI;
 
-    Serial.print("Yaw, Pitch, Roll: ");
-    Serial.print(yaw, 2);
-    Serial.print(", ");
-    Serial.print(pitch, 2);
-    Serial.print(", ");
-    Serial.println(roll, 2);
+    // Serial.print("Yaw, Pitch, Roll: ");
+    // Serial.print(yaw, 2);
+    // Serial.print(", ");
+    // Serial.print(pitch, 2);
+    // Serial.print(", ");
+    // Serial.println(roll, 2);
     
-    Serial.print("rate = "); Serial.print((float)1.0f/deltat, 2); Serial.println(" Hz");
+    // Serial.print("rate = "); Serial.print((float)1.0f/deltat, 2); Serial.println(" Hz");
   
     // With these settings the filter is updating at a ~145 Hz rate using the Madgwick scheme and 
     // >200 Hz using the Mahony scheme even though the display refreshes at only 2 Hz.
