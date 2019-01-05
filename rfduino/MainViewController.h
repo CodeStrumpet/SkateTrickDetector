@@ -10,14 +10,18 @@
 #import "RFduino.h"
 #import <GLKit/GLKit.h>
 
-@interface MainViewController : UIViewController <FlipsideViewControllerDelegate, UIAlertViewDelegate, RFduinoDelegate> {
+@interface MainViewController : GLKViewController <FlipsideViewControllerDelegate, UIAlertViewDelegate, RFduinoDelegate> {
 
 }
 
 @property (strong, nonatomic) IBOutlet UIButton *toggleLoggingButton;
 @property (nonatomic, strong) IBOutlet UITextField *markerStringTextField;
 @property (strong, nonatomic) IBOutlet UITextView *logTextView;
-
 @property(strong, nonatomic) RFduino *rfduino;
+
+@property(strong, nonatomic) NSMutableArray *dataStream;
+@property(strong, nonatomic) NSMutableString *dataString;
+@property(strong, nonatomic) UIButton *recordingButton;
+@property(nonatomic) bool isRecording;
 
 @end

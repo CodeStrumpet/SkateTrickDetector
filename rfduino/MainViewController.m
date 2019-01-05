@@ -9,6 +9,7 @@
 #import <CoreMotion/CoreMotion.h>
 #import <QuartzCore/QuartzCore.h>
 #import <OpenGLES/ES2/glext.h>
+#import <OpenGLES/ES2/glext.h>
 #import "MainViewController.h"
 #import "GCDAsyncUdpSocket.h"
 #import "UDPConnection.h"
@@ -18,13 +19,71 @@
 
 #define LOG_BUFFER_SIZE 300
 
+typedef struct {
+    float Position[3];
+    float Color[4];
+    float TexCoord[2];
+} Vertex;
+
+const Vertex Vertices[] = {
+    // Front
+    {{1, -1, 1}, {1, 0, 0, 1}, {1, 0}},
+    {{1, 1, 1}, {0, 1, 0, 1}, {1, 1}},
+    {{-1, 1, 1}, {0, 0, 1, 1}, {0, 1}},
+    {{-1, -1, 1}, {0, 0, 0, 1}, {0, 0}},
+    // Back
+    {{1, 1, -1}, {1, 0, 0, 1}, {0, 1}},
+    {{-1, -1, -1}, {0, 1, 0, 1}, {1, 0}},
+    {{1, -1, -1}, {0, 0, 1, 1}, {0, 0}},
+    {{-1, 1, -1}, {0, 0, 0, 1}, {1, 1}},
+    // Left
+    {{-1, -1, 1}, {1, 0, 0, 1}, {1, 0}},
+    {{-1, 1, 1}, {0, 1, 0, 1}, {1, 1}},
+    {{-1, 1, -1}, {0, 0, 1, 1}, {0, 1}},
+    {{-1, -1, -1}, {0, 0, 0, 1}, {0, 0}},
+    // Right
+    {{1, -1, -1}, {1, 0, 0, 1}, {1, 0}},
+    {{1, 1, -1}, {0, 1, 0, 1}, {1, 1}},
+    {{1, 1, 1}, {0, 0, 1, 1}, {0, 1}},
+    {{1, -1, 1}, {0, 0, 0, 1}, {0, 0}},
+    // Top
+    {{1, 1, 1}, {1, 0, 0, 1}, {1, 0}},
+    {{1, 1, -1}, {0, 1, 0, 1}, {1, 1}},
+    {{-1, 1, -1}, {0, 0, 1, 1}, {0, 1}},
+    {{-1, 1, 1}, {0, 0, 0, 1}, {0, 0}},
+    // Bottom
+    {{1, -1, -1}, {1, 0, 0, 1}, {1, 0}},
+    {{1, -1, 1}, {0, 1, 0, 1}, {1, 1}},
+    {{-1, -1, 1}, {0, 0, 1, 1}, {0, 1}},
+    {{-1, -1, -1}, {0, 0, 0, 1}, {0, 0}}
+};
+
+const GLubyte Indices[] = {
+    // Front
+    0, 1, 2,
+    2, 3, 0,
+    // Back
+    4, 6, 5,
+    4, 5, 7,
+    // Left
+    8, 9, 10,
+    10, 11, 8,
+    // Right
+    12, 13, 14,
+    14, 15, 12,
+    // Top
+    16, 17, 18,
+    18, 19, 16,
+    // Bottom
+    20, 21, 22,
+    22, 23, 20
+};
 
 @interface MainViewController ()
 
 @property (nonatomic, strong) MotionController *motionController;
 @property (nonatomic, strong) UDPConnection *udpConnection;
 @property (nonatomic, strong) LogConnection *logConnection;
-@property (nonatomic, assign) BOOL isRecording;
 @property (nonatomic, strong) NSString *logString;
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, assign) long tag;
@@ -65,7 +124,16 @@
 
 @end
 
-@implementation MainViewController
+@implementation MainViewController {
+    
+    int packets;
+    char ch;
+    int packet;
+    double start;
+}
+@synthesize context = _context;
+@synthesize effect = _effect;
+
 @synthesize markerStringTextField;
 @synthesize udpConnection;
 @synthesize logConnection;
@@ -73,7 +141,29 @@
 @synthesize logString;
 @synthesize timer;
 @synthesize tag;
+//@synthesize rfduino;
 
++ (void)load
+{
+    // customUUID = @"c97433f0-be8f-4dc8-b6f0-5343e6100eb4";
+}
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+        UIButton *backButton = [UIButton buttonWithType:101];  // left-pointing shape
+        [backButton setTitle:@"Disconnect" forState:UIControlStateNormal];
+        [backButton addTarget:self action:@selector(disconnect:) forControlEvents:UIControlEventTouchUpInside];
+        
+        UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+        [[self navigationItem] setLeftBarButtonItem:backItem];
+        
+        [[self navigationItem] setTitle:@"Skate Trick Detector"];
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -103,6 +193,71 @@
     
     [_rfduino setDelegate:self];
     
+    _dataStream = [NSMutableArray new];
+    _dataString = [NSMutableString string];
+    
+    UIColor *start = [UIColor colorWithRed:58/255.0 green:108/255.0 blue:183/255.0 alpha:0.15];
+    UIColor *stop = [UIColor colorWithRed:58/255.0 green:108/255.0 blue:183/255.0 alpha:0.45];
+    
+    CAGradientLayer *gradient = [CAGradientLayer layer];
+    gradient.frame = [self.view bounds];
+    gradient.colors = [NSArray arrayWithObjects:(id)start.CGColor, (id)stop.CGColor, nil];
+    [self.view.layer insertSublayer:gradient atIndex:0];
+    
+    packets = 500;
+    ch = 'A';
+    packet = 0;
+    
+    self.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
+    
+    if (!self.context) {
+        NSLog(@"Failed to create ES context");
+    }
+    
+    GLKView *view = (GLKView *)self.view;
+    view.context = self.context;
+    view.drawableMultisample = GLKViewDrawableMultisample4X;
+    [self setupGL];
+    
+    _recordingButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [_recordingButton setTitle:@"Start" forState:UIControlStateNormal];
+    _recordingButton.frame = CGRectMake(200, 200, 150, 50);
+    [_recordingButton addTarget:self action:@selector(recordingButtonPressed:) forControlEvents:UIControlEventTouchDown];
+    [view addSubview:_recordingButton];
+    
+}
+
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)disconnect:(id)sender
+{
+    NSLog(@"disconnect pressed");
+    
+    [_rfduino disconnect];
+}
+
+- (NSURL *)applicationDocumentsDirectory {
+    return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory
+                                                   inDomains:NSUserDomainMask] lastObject];
+}
+
+- (void)recordingButtonPressed:(id)sender {
+    _isRecording = !_isRecording;
+    [_recordingButton setTitle:_isRecording ? @"Stop" : @"Start" forState:UIControlStateNormal];
+    
+    if (!_isRecording) {
+        NSLog(@"WRITE FILE!!!!!!!!!!!!!!!!!!!!!!!!!");
+        
+        NSString *path = [[self applicationDocumentsDirectory].path
+                          stringByAppendingPathComponent:@"skatetrickdetector.csv"];
+        [_dataString writeToFile:path atomically:YES
+                        encoding:NSUTF8StringEncoding error:nil];
+    }
 }
 
 

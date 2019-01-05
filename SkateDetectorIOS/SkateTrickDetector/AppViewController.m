@@ -45,6 +45,7 @@ and kbps.
 
 #import "AppViewController.h"
 #import <OpenGLES/ES2/glext.h>
+
 typedef struct {
     float Position[3];
     float Color[4];
